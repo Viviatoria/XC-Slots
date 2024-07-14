@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- slots.html                             Slots -->
+<!-- Web page that simulates a simple slot machine -->
+
+<html>
+ <head>
+   <title>XC Lucky Slots</title>
+   <script src="http://compsciconcepts.com/random.js"></script>
+   <script>
+     function slotSpin() {
+        numCredits = Number(creditSpan.innerHTML);
+        if(numCredits<=0){
+            alert("Sorry, you are out of spin credits.");
+            return;
+        }
+            
+        spin1 = RandomOneOf(['moon_orig', 'sun_orig', 'cloud_orig', 'star_orig']);
+        spin2 = RandomOneOf(['moon_orig', 'sun_orig', 'cloud_orig', 'star_orig']);
+        spin3 = RandomOneOf(['moon_orig', 'sun_orig', 'cloud_orig', 'star_orig']);
+        
+
+        slot1Img.src = 'https://viviatoria.weebly.com/uploads/1/5/0/2/150237129/' + spin1 + '.png';
+        slot2Img.src = 'https://viviatoria.weebly.com/uploads/1/5/0/2/150237129/' + spin2 + '.png';
+        slot3Img.src = 'https://viviatoria.weebly.com/uploads/1/5/0/2/150237129/' + spin3 + '.png';
+                  
+        imgCheck();
+     }
+       function checkCredits() {
+        if(numCredits<=0){
+            alert("Sorry, you are out of spin credits.");
+            return;
+        }
+           else {
+             creditSpan.innerHTML = Number(creditSpan.innerHTML) - 1;  
+           }
+       }
+       
+       function imgCheck() {
+           if (spin1==spin2&&spin1==spin3&&spin2==spin3) {
+               alert("Congratulations - YOU WON!!");
+           }
+           else {
+               checkCredits();
+           }
+       }
+   </script>
+ </head>
+
+ <body style="text-align:center">
+     <h3 style="color:#c5aeff">@ x C I R Q U E on MAL</h3><h1 style="color:#404040">✦ Lucky Slot Machine ✦</h1>
+   <p>
+     <img id="slot1Img" alt="moon" width=200 style="border:2px solid #717171" src="https://viviatoria.weebly.com/uploads/1/5/0/2/150237129/moon_orig.png">
+     <img id ="slot2Img" alt="cloud" width=200 style="border:2px solid #717171" src="https://viviatoria.weebly.com/uploads/1/5/0/2/150237129/cloud_orig.png">
+     <img id="slot3Img" alt="star" width=200 style="border:2px solid #717171" src="https://viviatoria.weebly.com/uploads/1/5/0/2/150237129/star_orig.png">
+   </p>
+   <p>
+     <button onclick="slotSpin();">Click to Spin</button>
+   </p>
+     
+   <p style="color:#c5aeff">Spin Credits: <span id="creditSpan">5</span></p>    
+ </body>
+</html>
